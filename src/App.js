@@ -1,28 +1,46 @@
 import React from "react";
 import './App.css';
-import CountdownTimer from "./components/CountdownTimer";
-import Headers from "./components/Header";
-import Users from "./components/Users";
-import UsersAgGrid from "./components/UsersAgGrid";
+import Header from "./components/Header";
+import Login  from "./components/Login";
+import './components/Login.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import { useAuth0 } from "@auth0/auth0-react";
 
+const PrivateRoute = ({component, ...rest})=>{
+  const {isAuthenticated } = useAuth0();
 
+  return (
+    <Route {...rest} render={() =>(
+      isAuthenticated ? component: (<Route component={Login} />)
+    )} />
+  )
+}
 function App() {
   return (
     <div className="App">
+    
 
-      <Headers />
-      <div className="parentDiv">
-        <div class="ct">
-          <CountdownTimer />
-        </div>
-        <div className="usr">
-          <Users />
-        </div>
-      </div>
-      <div className="agUsers">
-        <UsersAgGrid />
-        </div>
+    <Router>
+    <Switch>
+          <Route path="/login" > 
+              <Login />
+          </Route>
+          
+          <PrivateRoute exact path="/" 
+            component= {<><Header /><Dashboard/></>}/>
+        
+      </Switch>
+    
+    </Router>
+    
     </div>
+
+    
   );
 }
 

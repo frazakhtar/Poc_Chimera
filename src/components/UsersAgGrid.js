@@ -14,15 +14,15 @@ function UsersAgGrid() {
     },[])
 
     return (
-    <div className="ag-theme-alpine" style={{height: 400, width: '90%', margin: '40px'}}>
+    <div className="ag-theme-alpine" style={{height: 400, width: '90%', margin:'auto'}}>
         <AgGridReact
             rowData={data}  rowSelection="multiple" suppressDragLeaveHidesColumns={true} >
             <AgGridColumn field="id" sortable={ true } filter={ true } checkboxSelection={ true } floatingFilter= {true}></AgGridColumn>
-            <AgGridColumn field="name" sortable={ true } filter={ true } ></AgGridColumn>
-            <AgGridColumn field="email" sortable={ true } filter={ true } ></AgGridColumn>
-            <AgGridColumn field="company.name" sortable={ true } filter={ true } ></AgGridColumn>
-            <AgGridColumn field="phone" sortable={ true } filter={ true } ></AgGridColumn>
-            <AgGridColumn field="address.city" sortable={ true } filter={ true } ></AgGridColumn>
+            <AgGridColumn field="name" sortable={ true } filter={ true }floatingFilter= {true} ></AgGridColumn>
+            <AgGridColumn field="email" sortable={ true } filter={ true } floatingFilter= {true}></AgGridColumn>
+            <AgGridColumn field="company.name" sortable={ true } filter={ true } floatingFilter= {true}></AgGridColumn>
+            <AgGridColumn field="phone" sortable={ true } filter={ true } floatingFilter= {true}></AgGridColumn>
+            <AgGridColumn field="address.city" sortable={ true } filter={ true } floatingFilter= {true}></AgGridColumn>
         </AgGridReact>
     </div>
     )
